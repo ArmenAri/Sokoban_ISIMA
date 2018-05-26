@@ -3,7 +3,8 @@
 #ifndef COMPTEUR_
 #define COMPTEUR_
 
-class Compteur {
+class Compteur 
+{
 private:
 	int m_nbCoup;
 

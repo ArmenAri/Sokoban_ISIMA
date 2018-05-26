@@ -5,7 +5,8 @@
 
 #include <time.h>
 
-class Chronometre {
+class Chronometre
+{
 private:
 	time_t m_temps;
 

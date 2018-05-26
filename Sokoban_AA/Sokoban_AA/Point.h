@@ -6,7 +6,8 @@
 #include <iostream>
 #include <string>
 
-class Point {
+class Point 
+{
 private:
 	int m_x, m_y;
 

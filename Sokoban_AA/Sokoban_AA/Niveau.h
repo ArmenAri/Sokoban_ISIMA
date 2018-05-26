@@ -11,7 +11,8 @@
 #include <iostream>
 #include <sstream>
 
-class Niveau {
+class Niveau 
+{
 
 private:
 	Compteur compteur;

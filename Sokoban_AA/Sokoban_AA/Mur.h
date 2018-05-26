@@ -5,7 +5,8 @@
 
 #include "Cases.h"
 
-class Mur : public Cases {
+class Mur : public Cases 
+{
 
 public:
 	Mur(Point point);

@@ -5,7 +5,8 @@
 
 #include "Point.h"
 
-class Pion {
+class Pion 
+{
 private:
 	Point m_coordonnees;
 

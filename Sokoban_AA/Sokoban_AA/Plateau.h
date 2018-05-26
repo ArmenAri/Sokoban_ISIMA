@@ -21,7 +21,8 @@
 #include "Pion.h"
 #include "colors.h"
 
-class Plateau {
+class Plateau 
+{
 
 private:
 	Pion pion;

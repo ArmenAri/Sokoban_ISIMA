@@ -5,7 +5,8 @@
 
 #include "Niveau.h"
 
-class Partie {
+class Partie 
+{
 private:
 	Niveau m_niveau;
 	int m_score;
