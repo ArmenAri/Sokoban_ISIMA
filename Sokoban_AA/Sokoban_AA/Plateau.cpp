@@ -27,14 +27,8 @@ int Plateau::get_xSize()
 	return m_xSize;
 }
 
-bool Plateau::annulerDernierCoupPlateau()
-{
-	//TODO:
-	return false;
-}
-
 /*
-*	dirs : (-> 6), (<- 4), (8), (2)
+*	dirs : (-> 6), (<- 4), (8 haut), (2 bas)
 */
 void Plateau::deplacerPion(int direction)
 {
@@ -203,44 +197,104 @@ bool Plateau::possedePionPlateau(int i, int j)
 
 void Plateau::afficherPlateau()
 {
-	for (int y = 0; y < m_ySize; y++) {
-		for (int x = 0; x < m_xSize; x++) {
+	for (int y = 0; y < m_ySize; y++)
+	{
+		for (int x = 0; x < m_xSize; x++)
+		{
 			if (natureCasePlateau(y, x) == 1) /*Mur*/
 			{
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8 * 16 | BACKGROUND_INTENSITY);
-				std::cout << "  ";
+				if (WIN)
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8 * 16 | BACKGROUND_INTENSITY);
+					std::cout << "  ";
+				}
+				else
+				{
+					color("40");
+					std::cout << "  ";
+					color("0");
+				}
 			}
 			else if (possedePionPlateau(y, x)) /*Pion*/
 			{
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 * 16 | BACKGROUND_INTENSITY);
-				std::cout << "^^";
+				if (WIN)
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 * 16 | BACKGROUND_INTENSITY);
+					std::cout << "^^";
+				}
+				else
+				{
+					color("45;36;1");
+					std::cout << "^^";
+					color("0");
+				}
 			}
 			else if (possedeCaissePlateau(y, x)) /*Caisse*/
 			{
 				if (natureCasePlateau(y, x) == 2)
 				{
-					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13 * 16 | BACKGROUND_INTENSITY);
+					if (WIN)
+					{
+						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13 * 16 | BACKGROUND_INTENSITY);
+						std::cout << "><";
+					}
+					else
+					{
+						color("42");
+						std::cout << "><";
+						color("0");
+					}
 				}
 				else
 				{
-					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 9 * 16 | BACKGROUND_INTENSITY | 15);
+					if (WIN)
+					{
+						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 9 * 16 | BACKGROUND_INTENSITY | 7);
+						std::cout << "><";
+					}
+					else
+					{
+						color("41");
+						std::cout << "><";
+						color("0");
+					}
 				}
-				std::cout << "><";
 			}
 			else if (natureCasePlateau(y, x) == 2) /*PointCible*/
 			{
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11 * 16 | BACKGROUND_INTENSITY);
-				std::cout << "<>";
+				if (WIN)
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11 * 16 | BACKGROUND_INTENSITY);
+					std::cout << "<>";
+				}
+				else
+				{
+					color("43");
+					std::cout << "<>";
+					color("0");
+				}
 			}
 			else
 			{
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7 * 16);
-				std::cout << "  ";
+				if (WIN)
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7 * 16);
+					std::cout << "  ";
+				}
+				else
+				{
+					color("47");
+					std::cout << "  ";
+					color("0");
+				}
 			}
 		}
 		std::cout << std::endl;
 	}
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	if (WIN)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
 }
 
 int Plateau::peutDeplacer(Point direction)

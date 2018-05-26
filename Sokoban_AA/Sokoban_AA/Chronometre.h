@@ -24,7 +24,7 @@ public:
 	*@brief : arrete le chronometre
 	*@return : le temps écoulé depuis l'appel de la fonction start()
 	*/
-	time_t stop();
+	double stop();
 };
 
 #endif

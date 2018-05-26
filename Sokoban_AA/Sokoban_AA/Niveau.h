@@ -55,7 +55,7 @@ public:
 	*@brief : ecrit le chronometre, le compteur, les positions des caisse et du pion dans le fichier nomFichier
 	*/
 	void SauvegarderNiveau(std::string nomFichier);
-	
+
 	/*
 	*@param : nomFichier
 	*@brief : charge le plateau à partir du fichier nomFichier

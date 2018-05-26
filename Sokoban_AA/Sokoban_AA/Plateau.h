@@ -1,5 +1,12 @@
 #pragma once
 
+#if defined(_WIN32)
+#include <Windows.h>
+#define WIN true
+#elif defined(__linux__)
+#define WIN false
+#endif
+
 #ifndef PLATEAU_
 #define PLATEAU_
 
@@ -12,8 +19,7 @@
 #include "PointCible.h"
 #include "Caisse.h"
 #include "Pion.h"
-#include <Windows.h>
-//#include "colors.h"
+#include "colors.h"
 
 class Plateau {
 
@@ -36,11 +42,6 @@ public:
 	*@return : la largeur du plateau
 	*/
 	int get_xSize();
-
-	/*
-	*@return : false
-	*/
-	bool annulerDernierCoupPlateau();
 
 	/*
 	*@param : direction
@@ -103,7 +104,7 @@ public:
 
 	/*
 	*@param : i, j
-	*@return : true si la case à la position i et j possede une Caisse 
+	*@return : true si la case à la position i et j possede une Caisse
 	*/
 	bool possedeCaissePlateau(int i, int j);
 

@@ -64,8 +64,6 @@ void Niveau::InitialiserPlateau(std::string nomFichier)
 		m_old_plateau = Plateau(xSize, ySize);
 		m_nbCiasse = nbCaisse;
 
-		//std::cout << nbPion << ", " << m_plateau.get_xSize() << ":" << m_plateau.get_ySize() << ", " << m_nbCiasse << std::endl;
-
 		for (int y = 0; y < m_plateau.get_ySize(); y++)
 		{
 			for (int x = 0; x < m_plateau.get_xSize(); x++)
@@ -93,9 +91,7 @@ void Niveau::InitialiserPlateau(std::string nomFichier)
 					m_old_plateau.positionnerCaseClassique(Point(x, y));
 				}
 			}
-			// std::cout << std::endl;
 		}
-		// std::cout << std::endl;
 		monFlux.close();
 		m_old_plateau.copy(m_plateau);
 	}
@@ -124,8 +120,6 @@ void Niveau::InitialiserPlateauDefaut(std::string nomFichier)
 		m_old_plateau = Plateau(xSize, ySize);
 		m_nbCiasse = nbCaisse;
 
-		//std::cout << nbPion << ", " << m_plateau.get_xSize() << ":" << m_plateau.get_ySize() << ", " << m_nbCiasse << std::endl;
-
 		for (int y = 0; y < m_plateau.get_ySize(); y++)
 		{
 			for (int x = 0; x < m_plateau.get_xSize(); x++)
@@ -147,9 +141,7 @@ void Niveau::InitialiserPlateauDefaut(std::string nomFichier)
 					m_old_plateau.positionnerCaseClassique(Point(x, y));
 				}
 			}
-			// std::cout << std::endl;
 		}
-		// std::cout << std::endl;
 		monFlux.close();
 		m_old_plateau.copy(m_plateau);
 	}
@@ -161,8 +153,6 @@ void Niveau::InitialiserPlateauDefaut(std::string nomFichier)
 
 void Niveau::SauvegarderNiveau(std::string nomFichier) {
 	std::ofstream outfile(nomFichier);
-	int nbCoups, xSize, ySize, chrono;
-	char c;
 	int caseType = 0;
 	outfile << nbCoupExecute() << '\n';
 	outfile << chronometre.stop() << '\n';
@@ -199,7 +189,7 @@ void Niveau::ChargerNiveau(std::string nomFichier)
 	{
 		if (ligne != "")
 		{
-			int i = 2;
+			unsigned int i = 2;
 			std::string coordonnee = "";
 			int x, y;
 			while (i < ligne.length() && ligne[i] != ';')

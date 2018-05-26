@@ -15,7 +15,7 @@ void Chronometre::start(time_t temps)
 	m_temps = time(NULL) - temps;
 }
 
-time_t Chronometre::stop()
+double Chronometre::stop()
 {
 	return difftime(time(NULL), m_temps);
 }
