@@ -6,6 +6,17 @@ Plateau::Plateau()
 	m_ySize = 0;
 }
 
+Plateau::~Plateau()
+{
+	for (int i = 0; i < m_ySize; i++)
+	{
+		for (int j = 0; j < m_xSize; j++)
+		{
+			delete[] this->m_cases[i][j];
+		}
+	}
+}
+
 Plateau::Plateau(int xSize, int ySize)
 {
 	m_xSize = xSize;
@@ -331,16 +342,16 @@ int Plateau::peutDeplacer(Point direction)
 	return 1;
 }
 
-void Plateau::copy(Plateau & plateau)
+void Plateau::copy(Plateau* plateau)
 {
-	pion = plateau.pion;
+	pion = plateau->pion;
 
 	for (int y = 0; y < m_ySize; y++)
 	{
 		for (int x = 0; x < m_xSize; x++)
 		{
-			m_cases[y][x]->setPossCaisse(plateau.m_cases[y][x]->PossCaisse());
-			m_cases[y][x]->setPossPion(plateau.m_cases[y][x]->PossPion());
+			m_cases[y][x]->setPossCaisse(plateau->m_cases[y][x]->PossCaisse());
+			m_cases[y][x]->setPossPion(plateau->m_cases[y][x]->PossPion());
 		}
 	}
 

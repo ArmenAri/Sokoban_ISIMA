@@ -9,4 +9,5 @@
 */
 #define color(param) printf("\033[%sm",param)
 
+
 #endif

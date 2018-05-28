@@ -17,8 +17,8 @@ class Niveau
 private:
 	Compteur compteur;
 	Chronometre chronometre;
-	Plateau m_plateau;
-	Plateau m_old_plateau;
+	Plateau* m_plateau;
+	Plateau* m_old_plateau;
 	int m_nbCiasse;
 	int m_resultat;
 	int m_numeroNiveau;
@@ -27,6 +27,7 @@ public:
 	Niveau();
 	Niveau(int niveau);
 	Niveau(int niveau, bool charger);
+	void dechargerNiveau();
 
 	/*
 	*@brief : charge le plateau avant le dernier coup

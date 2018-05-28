@@ -16,6 +16,7 @@ private:
 
 public:
 	Cases(Point point);
+	//~Cases();
 	/*
 	*@brief : methode abstraite qui retourne la nature de la case
 	*/

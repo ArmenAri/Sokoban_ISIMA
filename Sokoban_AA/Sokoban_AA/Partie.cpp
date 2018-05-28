@@ -20,9 +20,14 @@ void Partie::recommencerNiveau(int niveau)
 
 void Partie::chargerNiveau(int niveau)
 {
+	m_niveau.dechargerNiveau();
 	m_niveau = Niveau(niveau, true);
 	m_niveauCourant = niveau;
 }
+
+/* Le probleme c'est que on fait un nouveau niveau*/
+/* L'ancien niveau lui il est pas détruit Ah !!!!
+*/
 
 void Partie::recommencerPartie()
 {

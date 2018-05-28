@@ -3,6 +3,7 @@
 #if defined(_WIN32)
 #include <Windows.h>
 #define WIN true
+#define colorWin(param) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), param | BACKGROUND_INTENSITY)
 #elif defined(__linux__)
 #define WIN false
 #endif
@@ -32,6 +33,7 @@ private:
 
 public:
 	Plateau();
+	~Plateau();
 	Plateau(int largeur, int longueur);
 
 	/*
@@ -129,7 +131,7 @@ public:
 	*@param : plateau
 	*@brief : copie le plateau plateau dans this
 	*/
-	void copy(Plateau & plateau);
+	void copy(Plateau * plateau);
 };
 
 #endif

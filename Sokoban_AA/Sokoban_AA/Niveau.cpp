@@ -33,15 +33,21 @@ Niveau::Niveau(int numero, bool charger)
 	}
 }
 
+void Niveau::dechargerNiveau()
+{
+	std::cout << "Niveau déchargé" << std::endl;
+	delete(m_plateau); 
+}
+
 void Niveau::annulerDernierCoup()
 {
-	m_plateau.copy(m_old_plateau);
+	m_plateau->copy(m_old_plateau);
 }
 
 void Niveau::bougerPion(int direction)
 {
-	m_old_plateau.copy(m_plateau);
-	m_plateau.deplacerPion(direction);
+	m_old_plateau->copy(m_plateau);
+	m_plateau->deplacerPion(direction);
 	compteur.incrementerCoup();
 }
 
@@ -60,40 +66,40 @@ void Niveau::InitialiserPlateau(std::string nomFichier)
 		monFlux >> ySize;
 		monFlux >> nbCaisse;
 
-		m_plateau = Plateau(xSize, ySize);
-		m_old_plateau = Plateau(xSize, ySize);
+		m_plateau = new Plateau(xSize, ySize);
+		m_old_plateau = new Plateau(xSize, ySize);
 		m_nbCiasse = nbCaisse;
 
-		for (int y = 0; y < m_plateau.get_ySize(); y++)
+		for (int y = 0; y < m_plateau->get_ySize(); y++)
 		{
-			for (int x = 0; x < m_plateau.get_xSize(); x++)
+			for (int x = 0; x < m_plateau->get_xSize(); x++)
 			{
 				monFlux >> c;
 				if (c == 'M') {
-					m_plateau.positionnerMur(Point(x, y));
-					m_old_plateau.positionnerMur(Point(x, y));
+					m_plateau->positionnerMur(Point(x, y));
+					m_old_plateau->positionnerMur(Point(x, y));
 				}
 				else if (c == 'O') {
-					m_plateau.positionnerPointCible(Point(x, y));
-					m_old_plateau.positionnerPointCible(Point(x, y));
+					m_plateau->positionnerPointCible(Point(x, y));
+					m_old_plateau->positionnerPointCible(Point(x, y));
 				}
 				else if (c == 'P') {
-					m_plateau.positionnerPion(Point(x, y));
-					m_old_plateau.positionnerPion(Point(x, y));
+					m_plateau->positionnerPion(Point(x, y));
+					m_old_plateau->positionnerPion(Point(x, y));
 				}
 				else if (c == 'C') {
-					m_plateau.positionnerCaisse(Point(x, y), caisse_id);
-					m_old_plateau.positionnerCaisse(Point(x, y), caisse_id);
+					m_plateau->positionnerCaisse(Point(x, y), caisse_id);
+					m_old_plateau->positionnerCaisse(Point(x, y), caisse_id);
 					caisse_id++;
 				}
 				else {
-					m_plateau.positionnerCaseClassique(Point(x, y));
-					m_old_plateau.positionnerCaseClassique(Point(x, y));
+					m_plateau->positionnerCaseClassique(Point(x, y));
+					m_old_plateau->positionnerCaseClassique(Point(x, y));
 				}
 			}
 		}
 		monFlux.close();
-		m_old_plateau.copy(m_plateau);
+		m_old_plateau->copy(m_plateau);
 	}
 	else
 	{
@@ -116,34 +122,34 @@ void Niveau::InitialiserPlateauDefaut(std::string nomFichier)
 		monFlux >> ySize;
 		monFlux >> nbCaisse;
 
-		m_plateau = Plateau(xSize, ySize);
-		m_old_plateau = Plateau(xSize, ySize);
+		m_plateau = new Plateau(xSize, ySize);
+		m_old_plateau = new Plateau(xSize, ySize);
 		m_nbCiasse = nbCaisse;
 
-		for (int y = 0; y < m_plateau.get_ySize(); y++)
+		for (int y = 0; y < m_plateau->get_ySize(); y++)
 		{
-			for (int x = 0; x < m_plateau.get_xSize(); x++)
+			for (int x = 0; x < m_plateau->get_xSize(); x++)
 			{
 				monFlux >> c;
 				if (c == 'M')
 				{
-					m_plateau.positionnerMur(Point(x, y));
-					m_old_plateau.positionnerMur(Point(x, y));
+					m_plateau->positionnerMur(Point(x, y));
+					m_old_plateau->positionnerMur(Point(x, y));
 				}
 				else if (c == 'O')
 				{
-					m_plateau.positionnerPointCible(Point(x, y));
-					m_old_plateau.positionnerPointCible(Point(x, y));
+					m_plateau->positionnerPointCible(Point(x, y));
+					m_old_plateau->positionnerPointCible(Point(x, y));
 				}
 				else
 				{
-					m_plateau.positionnerCaseClassique(Point(x, y));
-					m_old_plateau.positionnerCaseClassique(Point(x, y));
+					m_plateau->positionnerCaseClassique(Point(x, y));
+					m_old_plateau->positionnerCaseClassique(Point(x, y));
 				}
 			}
 		}
 		monFlux.close();
-		m_old_plateau.copy(m_plateau);
+		m_old_plateau->copy(m_plateau);
 	}
 	else
 	{
@@ -157,14 +163,14 @@ void Niveau::SauvegarderNiveau(std::string nomFichier) {
 	outfile << nbCoupExecute() << '\n';
 	outfile << chronometre.stop() << '\n';
 
-	for (int y = 0; y < m_plateau.get_ySize(); y++)
+	for (int y = 0; y < m_plateau->get_ySize(); y++)
 	{
-		for (int x = 0; x < m_plateau.get_xSize(); x++)
+		for (int x = 0; x < m_plateau->get_xSize(); x++)
 		{
-			if (m_plateau.possedeCaissePlateau(y, x)) {
+			if (m_plateau->possedeCaissePlateau(y, x)) {
 				outfile << "C" << ";" << x << ";" << y << '\n';
 			}
-			else if (m_plateau.possedePionPlateau(y, x)) {
+			else if (m_plateau->possedePionPlateau(y, x)) {
 				outfile << "P" << ";" << x << ";" << y << '\n';
 			}
 		}
@@ -209,11 +215,11 @@ void Niveau::ChargerNiveau(std::string nomFichier)
 
 			if (ligne[0] == 'C')
 			{
-				m_plateau.chargerCaisse(Point(x, y));
+				m_plateau->chargerCaisse(Point(x, y));
 			}
 			else if (ligne[0] == 'P')
 			{
-				m_plateau.chargerPion(Point(x, y));
+				m_plateau->chargerPion(Point(x, y));
 			}
 		}
 	}
@@ -227,14 +233,14 @@ int Niveau::nbCoupExecute()
 
 bool Niveau::testSiGagner()
 {
-	if (m_plateau.gagner()) {
+	if (m_plateau->gagner()) {
 		std::cout << "Vous avez termine le niveau en : " << chronometre.stop() << "sec." << std::endl;
 		std::cout << "Nombre de coups : " << nbCoupExecute() << std::endl;
 	}
-	return m_plateau.gagner();
+	return m_plateau->gagner();
 }
 
 void Niveau::afficherNiveau()
 {
-	m_plateau.afficherPlateau();
+	m_plateau->afficherPlateau();
 }
