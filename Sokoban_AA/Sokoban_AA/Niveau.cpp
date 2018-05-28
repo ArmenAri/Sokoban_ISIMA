@@ -37,6 +37,7 @@ void Niveau::dechargerNiveau()
 {
 	std::cout << "Niveau déchargé" << std::endl;
 	delete(m_plateau); 
+	delete(m_old_plateau);
 }
 
 void Niveau::annulerDernierCoup()
@@ -55,20 +56,17 @@ void Niveau::InitialiserPlateau(std::string nomFichier)
 {
 	std::ifstream monFlux(nomFichier.c_str());
 
-	int nbPion, xSize, ySize, nbCaisse;
+	int xSize, ySize;
 	char c;
 	int caisse_id = 0;
 
 	if (monFlux)
 	{
-		monFlux >> nbPion;
 		monFlux >> xSize;
 		monFlux >> ySize;
-		monFlux >> nbCaisse;
 
 		m_plateau = new Plateau(xSize, ySize);
 		m_old_plateau = new Plateau(xSize, ySize);
-		m_nbCiasse = nbCaisse;
 
 		for (int y = 0; y < m_plateau->get_ySize(); y++)
 		{
@@ -111,20 +109,17 @@ void Niveau::InitialiserPlateauDefaut(std::string nomFichier)
 {
 	std::ifstream monFlux(nomFichier.c_str());
 
-	int nbPion, xSize, ySize, nbCaisse;
+	int xSize, ySize;
 	char c;
 	int caisse_id = 0;
 
 	if (monFlux)
 	{
-		monFlux >> nbPion;
 		monFlux >> xSize;
 		monFlux >> ySize;
-		monFlux >> nbCaisse;
 
 		m_plateau = new Plateau(xSize, ySize);
 		m_old_plateau = new Plateau(xSize, ySize);
-		m_nbCiasse = nbCaisse;
 
 		for (int y = 0; y < m_plateau->get_ySize(); y++)
 		{

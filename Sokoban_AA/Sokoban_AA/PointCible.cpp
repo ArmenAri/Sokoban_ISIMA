@@ -1,6 +1,6 @@
 #include "PointCible.h"
 
-PointCible::PointCible(Point point) : Cases(point)
+PointCible::PointCible(Point point) : CaseClassique(point)
 {
 
 }

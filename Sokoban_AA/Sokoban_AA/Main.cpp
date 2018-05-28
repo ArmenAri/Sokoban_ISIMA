@@ -5,6 +5,7 @@
 
 int main()
 {
+
 	Partie partie;
 	partie.start();
 	return 0;

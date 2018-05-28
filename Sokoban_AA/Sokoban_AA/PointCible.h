@@ -3,9 +3,9 @@
 #ifndef POINT_CIBLE_
 #define POINT_CIBLE_
 
-#include "Cases.h"
+#include "CaseClassique.h"
 
-class PointCible : public Cases {
+class PointCible : public CaseClassique {
 
 public:
 	PointCible(Point point);

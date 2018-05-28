@@ -12,9 +12,11 @@ Plateau::~Plateau()
 	{
 		for (int j = 0; j < m_xSize; j++)
 		{
-			delete[] this->m_cases[i][j];
+			delete this->m_cases[i][j];
 		}
+		delete[] m_cases[i];
 	}
+	delete[] m_cases;
 }
 
 Plateau::Plateau(int xSize, int ySize)
@@ -231,12 +233,12 @@ void Plateau::afficherPlateau()
 				if (WIN)
 				{
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 * 16 | BACKGROUND_INTENSITY);
-					std::cout << "^^";
+					std::cout << "  ";
 				}
 				else
 				{
 					color("45;36;1");
-					std::cout << "^^";
+					std::cout << "  ";
 					color("0");
 				}
 			}
@@ -247,12 +249,12 @@ void Plateau::afficherPlateau()
 					if (WIN)
 					{
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13 * 16 | BACKGROUND_INTENSITY);
-						std::cout << "><";
+						std::cout << "  ";
 					}
 					else
 					{
 						color("42");
-						std::cout << "><";
+						std::cout << "  ";
 						color("0");
 					}
 				}
@@ -261,12 +263,12 @@ void Plateau::afficherPlateau()
 					if (WIN)
 					{
 						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 9 * 16 | BACKGROUND_INTENSITY | 7);
-						std::cout << "><";
+						std::cout << "  ";
 					}
 					else
 					{
 						color("41");
-						std::cout << "><";
+						std::cout << "  ";
 						color("0");
 					}
 				}
@@ -276,12 +278,12 @@ void Plateau::afficherPlateau()
 				if (WIN)
 				{
 					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11 * 16 | BACKGROUND_INTENSITY);
-					std::cout << "<>";
+					std::cout << "  ";
 				}
 				else
 				{
 					color("43");
-					std::cout << "<>";
+					std::cout << "  ";
 					color("0");
 				}
 			}

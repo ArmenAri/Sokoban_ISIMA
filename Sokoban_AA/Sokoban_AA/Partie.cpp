@@ -3,6 +3,7 @@
 
 Partie::Partie()
 {
+	m_niveau.dechargerNiveau();
 	m_niveau = Niveau();
 	m_niveauCourant = 1;
 }
@@ -14,6 +15,7 @@ int Partie::nivPartieCourant()
 
 void Partie::recommencerNiveau(int niveau)
 {
+	m_niveau.dechargerNiveau();
 	m_niveau = Niveau(niveau);
 	m_niveauCourant = niveau;
 }
@@ -25,12 +27,9 @@ void Partie::chargerNiveau(int niveau)
 	m_niveauCourant = niveau;
 }
 
-/* Le probleme c'est que on fait un nouveau niveau*/
-/* L'ancien niveau lui il est pas détruit Ah !!!!
-*/
-
 void Partie::recommencerPartie()
 {
+	m_niveau.dechargerNiveau();
 	m_score = 0;
 	m_niveauCourant = 1;
 	m_niveau = Niveau();
@@ -38,6 +37,7 @@ void Partie::recommencerPartie()
 
 void Partie::passerNiveauSuivant()
 {
+	m_niveau.dechargerNiveau();
 	m_niveauCourant++;
 	m_niveau = Niveau(m_niveauCourant);
 }
