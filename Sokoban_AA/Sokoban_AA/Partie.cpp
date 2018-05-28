@@ -48,6 +48,8 @@ void Partie::start()
 	//int input = 0;
 	char input;
 	//std::cout << "------------- .:: SOKOBAN ARMENIEN ::. -------------" << std::endl << std::endl;
+	m_niveau.afficherNiveau();
+	system("cls");
 	afficherAide();
 	m_niveau.afficherNiveau();
 	do {

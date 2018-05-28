@@ -152,7 +152,7 @@ void Niveau::InitialiserPlateauDefaut(std::string nomFichier)
 }
 
 void Niveau::SauvegarderNiveau(std::string nomFichier) {
-	std::ofstream outfile(nomFichier);
+	std::ofstream outfile(nomFichier.c_str());
 	int caseType = 0;
 	outfile << nbCoupExecute() << '\n';
 	outfile << chronometre.stop() << '\n';

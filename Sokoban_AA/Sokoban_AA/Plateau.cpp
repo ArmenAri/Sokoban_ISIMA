@@ -216,97 +216,45 @@ void Plateau::afficherPlateau()
 		{
 			if (natureCasePlateau(y, x) == 1) /*Mur*/
 			{
-				if (WIN)
-				{
-					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8 * 16 | BACKGROUND_INTENSITY);
-					std::cout << "  ";
-				}
-				else
-				{
-					color("40");
-					std::cout << "  ";
-					color("0");
-				}
+				color(COLOR_PURPLE);
+				std::cout << "  ";
+				color(NO_COLOR);
 			}
 			else if (possedePionPlateau(y, x)) /*Pion*/
 			{
-				if (WIN)
-				{
-					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14 * 16 | BACKGROUND_INTENSITY);
-					std::cout << "  ";
-				}
-				else
-				{
-					color("45;36;1");
-					std::cout << "  ";
-					color("0");
-				}
+				color(COLOR_BLUE);
+				std::cout << "  ";
+				color(NO_COLOR);
 			}
 			else if (possedeCaissePlateau(y, x)) /*Caisse*/
 			{
 				if (natureCasePlateau(y, x) == 2)
 				{
-					if (WIN)
-					{
-						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13 * 16 | BACKGROUND_INTENSITY);
-						std::cout << "  ";
-					}
-					else
-					{
-						color("42");
-						std::cout << "  ";
-						color("0");
-					}
+					color(COLOR_GREEN);
+					std::cout << "  ";
+					color(NO_COLOR);
 				}
 				else
 				{
-					if (WIN)
-					{
-						SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 9 * 16 | BACKGROUND_INTENSITY | 7);
-						std::cout << "  ";
-					}
-					else
-					{
-						color("41");
-						std::cout << "  ";
-						color("0");
-					}
+					color(COLOR_YELLOW);
+					std::cout << "  ";
+					color(NO_COLOR);
 				}
 			}
 			else if (natureCasePlateau(y, x) == 2) /*PointCible*/
 			{
-				if (WIN)
-				{
-					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11 * 16 | BACKGROUND_INTENSITY);
-					std::cout << "  ";
-				}
-				else
-				{
-					color("43");
-					std::cout << "  ";
-					color("0");
-				}
+				color(COLOR_CYAN);
+				std::cout << "  ";
+				color(NO_COLOR);
 			}
 			else
 			{
-				if (WIN)
-				{
-					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7 * 16);
-					std::cout << "  ";
-				}
-				else
-				{
-					color("47");
-					std::cout << "  ";
-					color("0");
-				}
+				color(COLOR_WHITE);
+				std::cout << "  ";
+				color(NO_COLOR);
 			}
 		}
 		std::cout << std::endl;
-	}
-	if (WIN)
-	{
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 	}
 }
 
