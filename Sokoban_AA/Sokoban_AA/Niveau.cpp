@@ -35,7 +35,6 @@ Niveau::Niveau(int numero, bool charger)
 
 void Niveau::dechargerNiveau()
 {
-	std::cout << "Niveau déchargé" << std::endl;
 	delete(m_plateau); 
 	delete(m_old_plateau);
 }

@@ -12,7 +12,7 @@ Plateau::~Plateau()
 	{
 		for (int j = 0; j < m_xSize; j++)
 		{
-			delete this->m_cases[i][j];
+			delete m_cases[i][j];
 		}
 		delete[] m_cases[i];
 	}
